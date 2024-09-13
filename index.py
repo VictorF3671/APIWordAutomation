@@ -1,3 +1,5 @@
+import tkinter as tk
+from tkinter import filedialog, messagebox
 import pandas as pd
 from docx import Document
 
@@ -12,7 +14,7 @@ def substituir_texto(doc, marcador, substituto):
                 substituir_texto(celula, marcador, substituto)
 
 # Carregar dados da planilha Excel
-df = pd.read_excel('lista.xlsx')
+df = pd.read_excel('lista3.xlsx')
 
 # Iterar sobre cada linha da planilha e gerar um documento Word para cada uma
 for index, row in df.iterrows():
@@ -25,7 +27,7 @@ for index, row in df.iterrows():
     substituir_texto(doc, '{{ rg }}', row['rg'])
     substituir_texto(doc, '{{ endereco }}', row['endereço'])
     substituir_texto(doc, '{{ bairro }}', row['bairro'])
-    substituir_texto(doc, '{{ cep }}', row['cep'])
+    # substituir_texto(doc, '{{ cep }}', row['cep'])
     substituir_texto(doc, '{{ telefone }}', row['telefone'])   
     # Salvar o documento resultante
     doc.save(f'TERMO DE DOACAO - {row['nome']}.docx')
